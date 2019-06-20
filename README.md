@@ -1,24 +1,41 @@
-# README
+## usersテーブル
+|Column|Type|Options|
+|--|--|--|
+|nickname|string|null:false|
+|email|string|null:false|
+|password|integer|nullfalse|
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Assodiation
+has_many :menbers
+has_many :massages
 
-Things you may want to cover:
+## groupsテーブル
+|Column|Type|Options|
+|--|--|--|
+|group_name|string|null:false|
 
-* Ruby version
+### Assodiation
+has_many :menbers
+has_many :messages
 
-* System dependencies
+## menbersテーブル
+|Column|Type|Options|
+|--|--|--|
+|user_id|integer|null:false, foreign_key: true|
+|group_id|integer|null:false, foreign_key: true|
 
-* Configuration
+### Assodiation
+belongs_to :user
+belongs_to :group
 
-* Database creation
+## messagesテーブル
+|Column|Type|Options|
+|--|--|--|
+|body|text| |
+|image|string| |
+|user_id|integer|null:false, foreign_key: true|
+|group_id|integer|null:false, foreign_key: true|
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Assodiation
+belongs_to :user
+belongs_to :group
