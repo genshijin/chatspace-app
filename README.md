@@ -1,3 +1,4 @@
+# DB設計
 ## usersテーブル
 |Column|Type|Options|
 |--|--|--|
@@ -6,8 +7,8 @@
 |password|integer|nullfalse|
 
 ### Assodiation
-has_many :menbers
-has_many :massages
+- has_many :groups, through: :users_groups
+- has_many :massages
 
 ## groupsテーブル
 |Column|Type|Options|
@@ -15,18 +16,18 @@ has_many :massages
 |group_name|string|null:false|
 
 ### Assodiation
-has_many :menbers
-has_many :messages
+- has_many :menbers, through: :users_groups
+- has_many :messages
 
-## menbersテーブル
+## users_groupsテーブル
 |Column|Type|Options|
 |--|--|--|
 |user_id|integer|null:false, foreign_key: true|
 |group_id|integer|null:false, foreign_key: true|
 
 ### Assodiation
-belongs_to :user
-belongs_to :group
+- belongs_to :user
+- belongs_to :group
 
 ## messagesテーブル
 |Column|Type|Options|
@@ -37,5 +38,5 @@ belongs_to :group
 |group_id|integer|null:false, foreign_key: true|
 
 ### Assodiation
-belongs_to :user
-belongs_to :group
+- belongs_to :user
+- belongs_to :group
