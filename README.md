@@ -6,7 +6,8 @@
 |email|string|null:false|
 |password|integer|nullfalse|
 
-### Assodiation
+### Association
+- has_many :users_groups
 - has_many :groups, through: :users_groups
 - has_many :massages
 
@@ -15,8 +16,9 @@
 |--|--|--|
 |group_name|string|null:false|
 
-### Assodiation
-- has_many :menbers, through: :users_groups
+### Association
+- has_many :users_groups
+- has_many :users, through: :users_groups
 - has_many :messages
 
 ## users_groupsテーブル
@@ -25,7 +27,7 @@
 |user_id|integer|null:false, foreign_key: true|
 |group_id|integer|null:false, foreign_key: true|
 
-### Assodiation
+### Association
 - belongs_to :user
 - belongs_to :group
 
@@ -37,6 +39,6 @@
 |user_id|integer|null:false, foreign_key: true|
 |group_id|integer|null:false, foreign_key: true|
 
-### Assodiation
+### Association
 - belongs_to :user
 - belongs_to :group
