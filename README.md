@@ -4,7 +4,7 @@
 |--|--|--|
 |nickname|string|null:false|
 |email|string|null:false, unique: true|
-|password|integer|nullfalse|
+|password|integer|null:false|
 
 ### Association
 - has_many :users_groups
