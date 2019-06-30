@@ -1,0 +1,15 @@
+$colors:(
+  blue: #38aEf0,
+  white: #fff,
+  font-black1: #333,
+  font-black2: #434a54,
+  font-gray: #999,
+  line-gray: #eee,
+  back-gray1: #ddd,
+  back-gray2: #fafafa,
+  back-navy1: #253141,
+  back-navy2: #2f3e51,
+  );
+@function colors($key) {
+  @return map-get($colors, $key);
+}
