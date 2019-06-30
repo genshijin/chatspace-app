@@ -1,5 +1,5 @@
-class MessagesController < ApplicationController
-  def index
+# frozen_string_literal: true
 
-  end
+class MessagesController < ApplicationController
+  def index; end
 end
