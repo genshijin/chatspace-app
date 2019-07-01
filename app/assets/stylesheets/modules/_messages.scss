@@ -1,0 +1,65 @@
+.chat-window{
+  display: flex;
+  flex-direction: column;
+  width: calc(100vw - 300px);
+  .main-header{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid colors(line-gray);
+    padding: 0 40px;
+    &__left-box{
+      &__current-group {
+        padding: 35px 0 15px;
+        font-size: 20px;
+        }
+      &__menber-list {
+        display: flex;
+        font-size: 12px;
+        color: colors(font-gray);
+        &__member {
+          margin-right: 5px;
+          &:first-child::before{
+            content: "Menber：";
+          }
+        }
+      }
+    }
+    &__edit-btn {
+      a{
+        display: block;
+        padding: 0 20px;
+        margin-top: 28px;
+        height: 40px;
+        border: 1px solid colors(blue);
+        color: colors(blue);
+        line-height: 40px;
+        text-decoration: none;
+      }
+    }
+  }
+  .messages{
+    flex-grow: 2;
+    background: colors(back-gray2);
+    padding: 26px 40px 0;
+    color: colors(font-black2);
+    .message{
+      padding: 20px 0;
+      &__upper-info{
+        display: flex;
+        margin-bottom: 10px;
+        &__talker{
+          font-size: 16px;
+        }
+        &__date{
+          font-size: 12px;
+          color: colors(font-gray);
+          margin-left: 10px;
+          line-height: 2;
+        }
+      }
+      &__text{
+        font-size: 14px;
+      }
+    }
+  }
+}

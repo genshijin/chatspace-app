@@ -1,0 +1,8 @@
+.form
+  = form_with scope: :message, class: :new_message, id: :new_message, local: true do |f|
+    .input-box
+      = f.text_area :content, placeholder: 'type a message', class: :input-box__message, id: :message_content
+      = f.label :image, class: :input-box__image
+        = fa_icon 'image'
+        = f.file_field :image, class: :input-box__image__file, id: :message_image
+    = f.submit :Send, class: :submit-btn
