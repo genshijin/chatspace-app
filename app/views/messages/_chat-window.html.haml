@@ -1,22 +1,15 @@
 .chat-window
   .main-header
     .main-header__left-box
-      %h2.main-header__left-box__current-group GroupName
+      %h2.main-header__left-box__current-group
+        = @group.name
       %ul.main-header__left-box__menber-list
-        %li.main-header__left-box__menber-list__member TestUser1
-        %li.main-header__left-box__menber-list__member TestUser2
+        - @users.each do |user|
+          %li.main-header__left-box__menber-list__member
+            = user.name
     .main-header__edit-btn
       = link_to edit_group_path(@group) do
         Edit
   .messages
-    .message
-      .message__upper-info
-        %p.message__upper-info__talker TestUser1
-        %p.message__upper-info__date 2019/06/19/(Wed) 09:41:36
-      %p.message__text TestMessage
-    .message
-      .message__upper-info
-        %p.message__upper-info__talker TestUser1
-        %p.message__upper-info__date 2019/06/19/(Wed) 09:41:36
-      %p.message__text TestMessage
+    = render @messages
   = render 'form'

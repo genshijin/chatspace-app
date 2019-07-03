@@ -65,3 +65,5 @@ gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'devise'
+gem 'carrierwave'
+gem 'mini_magick'
