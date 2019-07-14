@@ -18,6 +18,11 @@ $(function () {
                 </div>`
     return html;
   }
+  function scrollBottom() {
+    var target = $('.message').last();
+    var position = target.offset().top + $('.messages').scrollTop();
+    $('.messages').animate({ scrollTop: position }, 300, 'swing');
+  }
   $("#new_message").on("submit", function (e) {
     e.preventDefault();
     var formData = new FormData(this);
@@ -32,8 +37,9 @@ $(function () {
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.messages').append(html);
+      $('.messages').append(html).scrollBottom;
       $('#message_body').val('');
+      scrollBottom()
     })
     .fail(function (data) {
       alert('エラーが発生したためメッセージは送信できませんでした。');
