@@ -38,5 +38,8 @@ $(function () {
     .fail(function (data) {
       alert('エラーが発生したためメッセージは送信できませんでした。');
     })
+    .always(function (data) {
+      $('.submit-btn').prop('disabled', false);
+    })
   })
 })
