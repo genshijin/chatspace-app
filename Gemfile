@@ -71,4 +71,3 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
-gem "jquery-rails"
