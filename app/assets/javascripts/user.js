@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function(){
   function appendUserHTML(user) {
     var html = `<div class="chat-group-user clearfix">
                   <p class="chat-group-user__name">${user.name}</p>
@@ -39,8 +39,16 @@ $(function() {
       alert('ユーザー検索に失敗しました');
     })
   });
-
-
+})
+$(function() {
+  function appendMemberHTML(user_id, name){
+    var html = `<div class='chat-group-user clearfix js-chat-member' id='${user_id}'>
+                  <input name='group[user_ids][]' type='hidden' value='${user_id}'>
+                  <p class='chat-group-user__name'>${name}</p>
+                  <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
+                </div>`
+    $("#chat-group-users").append(html);
+  }
   $(document).on("click", ".user-search-add",function(){
     $("#chat-group-users").val();
     var user_id = $(this).data('user-id');
@@ -51,13 +59,4 @@ $(function() {
   $(document).on("click",".user-search-remove", function(){
     $(this).parent().remove();
   })
-
-  function appendMemberHTML(user_id, name){
-    var html = `<div class='chat-group-user clearfix js-chat-member' id='${user_id}'>
-                  <input name='group[user_ids][]' type='hidden' value='${user_id}'>
-                  <p class='chat-group-user__name'>${name}</p>
-                  <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
-                </div>`
-    $("#chat-group-users").append(html);
-  }
 })
