@@ -37,7 +37,7 @@ $(function () {
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.messages').append(html);
+      $('.messages').append(html).scrollBottom;
       $('#message_body').val('');
       scrollBottom()
     })
