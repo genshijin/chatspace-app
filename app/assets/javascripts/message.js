@@ -5,7 +5,7 @@ $(function () {
     var html = `<div class="message">
                   <div class="message__upper-info">
                     <p class="message__upper-info__talker">
-                      ${ message.name}
+                      ${ message.user_name}
                     </p>
                     <p class="message__upper-info__date">
                       ${message.date}
@@ -38,8 +38,8 @@ $(function () {
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html);
-      $('#message_body').val('');
-      scrollBottom()
+      $('#new_message')[0].reset();
+      scrollBottom();
     })
     .fail(function (data) {
       alert('エラーが発生したためメッセージは送信できませんでした。');
