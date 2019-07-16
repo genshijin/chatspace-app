@@ -2,7 +2,7 @@
 ## usersテーブル
 |Column|Type|Options|
 |--|--|--|
-|name|string|null:false|
+|name|string|null:false, index_users_on_name|
 |email|string|null:false, unique: true|
 |password|integer|null:false|
 
