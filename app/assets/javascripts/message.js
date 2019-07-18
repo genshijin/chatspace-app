@@ -2,7 +2,7 @@ $(function () {
   function buildHTML(message) {
     var body = message.body ? `${ message.body }` : "";
     var image = message.image ? `${ message.image }` : "";
-    var html = `<div class="message">
+    var html = `<div class="message" data-message-id="${message.id}">
                   <div class="message__upper-info">
                     <p class="message__upper-info__talker">
                       ${ message.user_name}
@@ -41,11 +41,40 @@ $(function () {
       $('#new_message')[0].reset();
       scrollBottom();
     })
-    .fail(function (data) {
+    .fail(function () {
       alert('エラーが発生したためメッセージは送信できませんでした。');
     })
-    .always(function (data) {
+    .always(function () {
       $('.submit-btn').prop('disabled', false);
     })
-  })
-})
+  });
+
+  var interval = setInterval(function(){
+    if(window.location.href.match(/\/groups\/\d+\/messages/)){
+      var last_message_id = $(".message").last().data("message-id") || 0;
+      
+      $.ajax({
+        url:  "api/messages",
+        type: 'GET',
+        data: {
+          id: last_message_id 
+        },
+        dataType: 'json'
+      })
+      .done(function(data) {
+        if (data.length > 0){
+          var addHtml ='';
+          data.forEach(function(message){
+            addHtml += buildHTML(message);
+          });
+          $('.messages').append(addHtml)
+          $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'slow');
+        }
+      })
+      .fail(function() {
+        alert('自動更新に失敗しました')
+      });
+    } else {
+      clearInterval(interval);
+    }},5000);
+});
