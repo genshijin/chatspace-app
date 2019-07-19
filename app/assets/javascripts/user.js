@@ -17,7 +17,7 @@ $(document).on('turbolinks:load', function(){
   $("#user-search-field").on('keyup paste', function(){
     var input = $("#user-search-field").val();
     $.ajax({
-      type: 'GET',
+      type: "GET",
       url: '/users',
       data:{keyword: input},
       dataType: 'json',
