@@ -11,10 +11,10 @@ $(function () {
                       ${message.date}
                     </p>
                   </div>
-                    <p class="message__text">
-                      ${body}
-                    </p>
-                  ${image}
+                  <p class="message__text">
+                    ${body}
+                  </p>
+                  <img src="${image}" class="message__image">
                 </div>`
     return html;
   }
