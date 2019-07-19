@@ -68,7 +68,7 @@ $(function () {
             addHtml += buildHTML(message);
           });
           $('.messages').append(addHtml)
-          $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'slow');
+          scrollBottom()
         }
       })
       .fail(function() {
