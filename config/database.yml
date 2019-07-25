@@ -52,3 +52,6 @@ production:
   database: chatspace-app_production
   username: chatspace-app
   password: <%= ENV['CHATSPACE-APP_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
