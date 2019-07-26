@@ -63,6 +63,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+gem 'carrierwave'
+gem 'fog-aws'
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
@@ -81,6 +83,5 @@ gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'devise'
-gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-rails'
