@@ -51,24 +51,23 @@ $(document).on('turbolinks:load', function(){
 
   var interval = setInterval(function(){
     if(window.location.href.match(/\/groups\/\d+\/messages/)){
-      var last_message_id = $(".message").last().data("message-id") || 0;
-      
+      var last_message_id = $('.message:last').data('message-id') || 0;
       $.ajax({
         url:  "api/messages",
         type: 'GET',
         data: {
-          id: last_message_id 
+          id: last_message_id
         },
         dataType: 'json'
       })
       .done(function(data) {
         if (data.length > 0){
-          var addHtml ='';
+          var addHtml = '';
           data.forEach(function(message){
             addHtml += buildHTML(message);
           });
           $('.messages').append(addHtml)
-          scrollBottom()
+          scrollBottom();
         }
       })
       .fail(function() {
