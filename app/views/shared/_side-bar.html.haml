@@ -12,17 +12,9 @@
             = fa_icon 'cog'
   .groups
     - current_user.groups.each do |group|
-      - if group.id == @group.id
-        .group#selected
-          = link_to group_messages_path(group) do
-            %p.group__group-name
-              = group.name
-            %p.group__latest-message
-              = group.show_last_message
-      - else
-        .group
-          = link_to group_messages_path(group) do
-            %p.group__group-name
-              = group.name
-            %p.group__latest-message
-              = group.show_last_message
+      .group
+        = link_to group_messages_path(group) do
+          %p.group__group-name
+            = group.name
+          %p.group__latest-message
+            = group.show_last_message
