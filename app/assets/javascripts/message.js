@@ -18,6 +18,10 @@ $(document).on('turbolinks:load', function(){
                 </div>`
     return html;
   }
+  function buildLastMessage(message){
+    var last_message = message.body ? `${ message.body }` : '画像が投稿されています';
+    return last_message;
+  }
   function scrollBottom() {
     var target = $('.message').last();
     var position = target.offset().top + $('.messages').scrollTop();
@@ -37,9 +41,11 @@ $(document).on('turbolinks:load', function(){
     })
     .done(function(data){
       var html = buildHTML(data);
+      var last_message = buildLastMessage(data);
       $('.messages').append(html);
       $('#new_message')[0].reset();
       scrollBottom();
+      $('#selected').find('.group__latest-message').text(last_message);
     })
     .fail(function () {
       alert('エラーが発生したためメッセージは送信できませんでした。');
@@ -63,11 +69,14 @@ $(document).on('turbolinks:load', function(){
       .done(function(data) {
         if (data.length > 0){
           var addHtml = '';
+          var last_message = '';
           data.forEach(function(message){
             addHtml += buildHTML(message);
+            last_message = buildLastMessage(message);
           });
           $('.messages').append(addHtml)
           scrollBottom();
+          $('#selected').find('.group__latest-message').text(last_message);
         }
       })
       .fail(function() {
